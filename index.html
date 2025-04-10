@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Page Archiver</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="manifest.json">
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+    button {
+      padding: 15px;
+      font-size: 16px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Page Archiver</h1>
+  <div id="content">
+    <!-- Dynamic content will appear here -->
+  </div>
+  <script>
+    // Register the service worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+      .then(registration => {
+        console.log('Service Worker registered with scope:', registration.scope);
+      })
+      .catch(error => {
+        console.log('Service Worker registration failed:', error);
+      });
+    }
+
+    // Helper function: parse query string parameters
+    function getQueryParams() {
+      const params = {};
+      location.search.substr(1).split("&").forEach(function(pair) {
+        if (pair === "") return;
+        let parts = pair.split("=");
+        params[decodeURIComponent(parts[0])] = decodeURIComponent(parts[1] || "");
+      });
+      return params;
+    }
+
+    const params = getQueryParams();
+    const sharedUrl = params.url || "";
+    const contentDiv = document.getElementById("content");
+
+    if (sharedUrl) {
+      // If a URL was shared, display the archiving options
+      contentDiv.innerHTML = `
+        <p><strong>Shared URL:</strong></p>
+        <p>${sharedUrl}</p>
+        <button id="waybackBtn">Archive with Wayback Machine</button>
+        <button id="archivephBtn">Archive with Archive.ph</button>
+      `;
+      
+      document.getElementById("waybackBtn").addEventListener("click", function() {
+        const archiveUrl = "https://web.archive.org/save/" + encodeURIComponent(sharedUrl);
+        window.open(archiveUrl, '_blank');
+      });
+
+      document.getElementById("archivephBtn").addEventListener("click", function() {
+        const archiveUrl = "https://archive.ph/?run=1&url=" + encodeURIComponent(sharedUrl);
+        window.open(archiveUrl, '_blank');
+      });
+    } else {
+      // If no URL was shared, instruct the user how to use the share feature.
+      contentDiv.innerHTML = "<p>No URL received.<br>Please use the Share option from your browser to send a page to this app.</p>";
+    }
+  </script>
+</body>
+</html>
