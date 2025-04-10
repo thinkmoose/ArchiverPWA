@@ -1,28 +1,28 @@
 {
-    "name": "Page Archiver",
-    "short_name": "Archiver",
-    "start_url": "/index.html",
-    "display": "standalone",
-    "icons": [
-      {
-        "src": "icon-192.png",
-        "sizes": "192x192",
-        "type": "image/png"
-      },
-      {
-        "src": "icon-512.png",
-        "sizes": "512x512",
-        "type": "image/png"
-      }
-    ],
-    "share_target": {
-      "action": "/index.html",
-      "method": "GET",
-      "params": {
-        "url": "url",
-        "title": "title",
-        "text": "text"
-      }
+  "name": "Page Archiver",
+  "short_name": "Archiver",
+  "start_url": "index.html",
+  "scope": "./",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "share_target": {
+    "action": "index.html",
+    "method": "GET",
+    "params": {
+      "url": "url",
+      "title": "title",
+      "text": "text"
     }
   }
-  
+}
