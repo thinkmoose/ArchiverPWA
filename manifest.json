@@ -1,9 +1,10 @@
 {
   "name": "Page Archiver",
   "short_name": "Archiver",
-  "start_url": "./index.html",  // Notice the "./" here to ensure proper relative path.
-  "scope": "./",                // Ensures all URLs are relative to the current folder.
+  "start_url": "index.html",
   "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
   "icons": [
     {
       "src": "icon-192.png",
@@ -15,14 +16,5 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "share_target": {
-    "action": "./index.html",
-    "method": "GET",
-    "params": {
-      "url": "url",
-      "title": "title",
-      "text": "text"
-    }
-  }
+  ]
 }
