@@ -1,0 +1,15 @@
+{
+  "host": "thinkmoose.github.io",
+  "siteUrl": "https://thinkmoose.github.io/ArchiverPWA",
+  "name": "Page Archiver",
+  "shortName": "Archiver",
+  "iconUrl": "https://thinkmoose.github.io/ArchiverPWA/icon-512.png",
+  "startUrl": "/ArchiverPWA",
+  "themeColor": "#ffffff",
+  "backgroundColor": "#ffffff",
+  "display": "standalone",
+  "navigationColor": "#ffffff",
+  "navigationColorDark": "#ffffff",
+  "fallbackType": "customtabs",
+  "enableNotifications": false
+}
